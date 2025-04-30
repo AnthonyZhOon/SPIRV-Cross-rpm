@@ -9,7 +9,7 @@ awkward IR/assembly-like code.}
 Name:           SPIRV-Cross
 Version:        %{sdkver}
 Release:        %autorelease
-Summary:        A tool designed for parsing and converting SPIR-V to other shader languages.
+Summary:        A tool designed for parsing and converting SPIR-V to other shader languages
 
 License:        Apache-2.0
 URL:            https://github.com/KhronosGroup/%{name}
@@ -17,7 +17,6 @@ Source0:        %url/archive/vulkan-sdk-%{sdkver}.tar.gz#/%{name}-sdk-%{sdkver}.
 
 BuildRequires:  cmake3
 BuildRequires:  gcc-c++
-BuildRequires:  ninja-build
 
 %description
 %{project_description}
@@ -29,7 +28,6 @@ Summary:        Shared library files for %{name}
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 %description    devel
 %{project_description}
 
@@ -43,7 +41,7 @@ Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
 %autosetup -p1 -n %{name}-vulkan-sdk-%{sdkver}
 
 %build
-%cmake -DSPIRV_CROSS_SHARED=ON 
+%cmake3 -DSPIRV_CROSS_SHARED=ON
 %cmake_build
 
 %install
@@ -59,10 +57,6 @@ rm -r %{buildroot}/%{_datadir}
 %license LICENSE
 %doc README.md
 %{_bindir}/%{lower:%{name}}
-%files libs
-%license LICENSE
-%{_libdir}/libspirv-cross-c-shared.so*
-%{_libdir}/pkgconfig/spirv-cross-c-shared.pc
 %files static
 %license LICENSE
 %{_libdir}/libspirv-cross-{c,core,cpp,glsl,hlsl,msl,reflect,util}.a
@@ -70,6 +64,9 @@ rm -r %{buildroot}/%{_datadir}
 %files devel
 %license LICENSE
 %{_includedir}/spirv_cross/
-
+%{_libdir}/pkgconfig/spirv-cross-c-shared.pc
+%files libs
+%license LICENSE
+%{_libdir}/libspirv-cross-c-shared.so*
 %changelog
 %autochangelog
