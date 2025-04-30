@@ -51,7 +51,7 @@ rm -r %{buildroot}/%{_datadir}
 
 
 %check
-# Upstreams tests do not support system installed glslang and spirv-tools, having spurious failrues
+# Upstreams tests do not support system installed glslang and spirv-tools, having spurious failures
 
 %files
 %license LICENSE
