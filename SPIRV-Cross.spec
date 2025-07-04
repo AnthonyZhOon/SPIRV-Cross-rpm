@@ -1,4 +1,4 @@
-%global sdkver 1.4.309.0
+%global sdkver 1.4.313
 %global project_description %{expand:
 SPIRV-Cross is a practical tool and library for performing reflection on SPIR-V
 and disassembling SPIR-V back to high level languages.
@@ -28,6 +28,8 @@ Summary:        Shared library files for %{name}
 
 %package        devel
 Summary:        Development files for %{name}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
+Recommends:     %{name}-static%{?_isa} = %{version}-%{release}
 %description    devel
 %{project_description}
 
